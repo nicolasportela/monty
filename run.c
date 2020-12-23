@@ -20,10 +20,10 @@ int run(char *line, stack_t **stack, unsigned int line_number)
 		{"push", add_int},
 		{"pall", p_stack},
 		{"pint", p_int},
-		{"pop", s_pop},
-		{"nop", nope},
+		{"pop", pop},
+		{"nop", nop},
 		{"add", add_func},
-		{"swap", swap_s},
+		{"swap", swap},
 		{NULL, NULL}
 	};
 	line_tok = strtok(line, delim);
@@ -37,12 +37,12 @@ int run(char *line, stack_t **stack, unsigned int line_number)
  * loop - loops through op_code to find and execute function
  * @op_c: array of struc
  * @l_t: line to check
- * @l_n: you know already
+ * @line_number: you know already
  * @s: stack
  * Return: 1 on failure, 0 on success
  */
 
-int loop(instruction_t *op_c, char *l_t, stack_t **s, unsigned int l_n)
+int loop(instruction_t *op_c, char *l_t, stack_t **s, unsigned int line_number)
 {
 	char *value = NULL;
 	int i = 0;
@@ -57,12 +57,12 @@ int loop(instruction_t *op_c, char *l_t, stack_t **s, unsigned int l_n)
 				value = strtok(NULL, delim);
 				if (value == NULL || isdigit(*value) == 0)
 				{
-					p_error(l_n);
+					p_error(line_number);
 					exit(EXIT_FAILURE);
 				}
 				op_value = atoi(value);
 			}
-			op_c[i].f(s, l_n);
+			op_c[i].f(s, line_number);
 			if (checker(s, l_t) == 1)
 				exit(EXIT_FAILURE);
 			break;
@@ -71,7 +71,7 @@ int loop(instruction_t *op_c, char *l_t, stack_t **s, unsigned int l_n)
 	}
 	if (op_c[i].opcode == NULL)
 	{
-		print_error(l_n, l_t);
+		print_error(line_number, l_t);
 		exit(EXIT_FAILURE);
 	}
 	return (0);

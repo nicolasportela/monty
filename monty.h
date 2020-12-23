@@ -47,11 +47,11 @@ void free_stack(stack_t *stack);
 void print_error(unsigned int line_number, char *line_tok);
 void p_error(unsigned int line_number);
 void p_int(stack_t **stack, unsigned int line_number);
-void s_pop(stack_t **stack, unsigned int line_number);
+void pop(stack_t **stack, unsigned int line_number);
 int checker(stack_t **stack, char *line_tok);
-void nope(stack_t **stack, unsigned int line_number);
+void nop(stack_t **stack, unsigned int line_number);
 int loop(instruction_t *op_c, char *l_t, stack_t **s, unsigned int l_n);
-void add_func(stack_t **stack, unsigned int l_n);
-void swap_s(stack_t **stack, unsigned int line_number);
+void add_func(stack_t **stack, unsigned int line_number);
+void swap(stack_t **stack, unsigned int line_number);
 
 #endif

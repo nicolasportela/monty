@@ -43,29 +43,37 @@ void add_int(stack_t **stack, unsigned int line_number)
 }
 
 /**
- * p_stack - print elements of the stack, from the last one added
- * @stack: pointer to stack
- * @line_number: number of line being read
+ * add_func - add two last val from stack and assign it to previous.
+ * @stack: stack to look for.
+ * @line_number: number of line to get analyzed.
  */
 
-void p_stack(stack_t **stack, unsigned int line_number)
+void add_func(stack_t **stack, unsigned int line_number)
 {
+	stack_t *prev = NULL;
 	stack_t *current = *stack;
-	(void)line_number;
+	int count = 1, add_value;
 
-	if (*stack == NULL)
-		return;
-
+	if (current == NULL)
+	{
+		fprintf(stderr, "L%d: can't add, stack too short\n", line_number);
+		exit(EXIT_FAILURE);
+	}
 	while (current->next != NULL)
 	{
 		current = current->next;
+		count++;
 	}
-	while (current->prev != NULL)
+	if (count < 2)
 	{
-		printf("%d\n", current->n);
-		current = current->prev;
+		fprintf(stderr, "L%d: can't add, stack too short\n", line_number);
+		exit(EXIT_FAILURE);
 	}
-	printf("%d\n", current->n);
+	prev = current->prev;
+	add_value = current->n + prev->n;
+	prev->n = add_value;
+	prev->next = NULL;
+	free(current);
 }
 
 /**
@@ -91,38 +99,4 @@ void free_stack(stack_t *stack)
 		stack = stack->prev;
 		free(save);
 	}
-}
-
-/**
- * print_error - print error in case that the line doesn't have correct op_code
- * @line_number: line number being read
- * @op_c: command being read
- */
-
-void print_error(unsigned int line_number, char *op_c)
-{
-	fprintf(stderr, "L%u: unknown instruction %s\n", line_number, op_c);
-}
-
-
-/**
- * p_int - print the top element of the stack(last added)
- * @stack: pointer to stack
- * @line_number: number of line being read
- */
-
-void p_int(stack_t **stack, unsigned int line_number)
-{
-	stack_t *current = *stack;
-
-	if (*stack == NULL)
-	{
-		fprintf(stderr, "L%d: can't pint, stack empty\n", line_number);
-		exit(EXIT_FAILURE);
-	}
-	while (current->next != NULL)
-	{
-		current = current->next;
-	}
-	printf("%d\n", current->n);
 }
