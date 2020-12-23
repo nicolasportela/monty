@@ -6,7 +6,7 @@ int op_value;
  * run - reads each line and asigns value to global variable
  * @line: Line got from the read function
  * @stack: stack with nodes
- * @line_number: which line it's reading
+ * @line_number: line number read
  * Return: 0 on correc execution, 1 on error
  */
 
@@ -36,8 +36,8 @@ int run(char *line, stack_t **stack, unsigned int line_number)
 /**
  * loop - loops through op_code to find and execute function
  * @op_c: array of struc
- * @l_t: line to check
- * @line_number: you know already
+ * @l_t: line checked
+ * @line_number: line number read
  * @s: stack
  * Return: 1 on failure, 0 on success
  */
@@ -79,7 +79,7 @@ int loop(instruction_t *op_c, char *l_t, stack_t **s, unsigned int line_number)
 
 /**
  * p_error - prints error in case of incorrect value for push
- * @line_number: number of line that is being read
+ * @line_number: line number read
  */
 
 void p_error(unsigned int line_number)
@@ -88,7 +88,7 @@ void p_error(unsigned int line_number)
 }
 
 /**
- * checker - checks if the stack is empty. works with relative functions
+ * checker - checks if the stack is empty. Works with relative functions
  * @stack: stack
  * @line_tok: value of opcode(function)
  * Return: 1 if any condition is true, 0 if not

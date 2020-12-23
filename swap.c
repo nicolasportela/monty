@@ -3,7 +3,7 @@
 /**
  * swap - Swap the top two elements of stack
  * @stack: Doubly linked list
- * @line_number: Line's number
+ * @line_number: line number read
  * Return: Nothing
  */
 

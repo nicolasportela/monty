@@ -43,9 +43,9 @@ void add_int(stack_t **stack, unsigned int line_number)
 }
 
 /**
- * add_func - add two last val from stack and assign it to previous.
- * @stack: stack to look for.
- * @line_number: number of line to get analyzed.
+ * add_func - add two last val from stack and assign them to previous one
+ * @stack: stack to look for
+ * @line_number: number of line to get analyzed
  */
 
 void add_func(stack_t **stack, unsigned int line_number)

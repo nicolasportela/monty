@@ -3,7 +3,7 @@
 /**
  * p_stack - print elements of the stack, from the last one added
  * @stack: pointer to stack
- * @line_number: number of line being read
+ * @line_number: line number read
  */
 
 void p_stack(stack_t **stack, unsigned int line_number)
@@ -28,8 +28,8 @@ void p_stack(stack_t **stack, unsigned int line_number)
 
 /**
  * print_error - print error in case that the line doesn't have correct op_code
- * @line_number: line number being read
- * @op_c: command being read
+ * @line_number: line number read
+ * @op_c: command read
  */
 
 void print_error(unsigned int line_number, char *op_c)
@@ -41,7 +41,7 @@ void print_error(unsigned int line_number, char *op_c)
 /**
  * p_int - print the top element of the stack(last added)
  * @stack: pointer to stack
- * @line_number: number of line being read
+ * @line_number: line number read
  */
 
 void p_int(stack_t **stack, unsigned int line_number)

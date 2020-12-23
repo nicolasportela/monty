@@ -1,8 +1,8 @@
 #include "monty.h"
 
 /**
- * read_func - reads each line of the file and sends it the the run funcion
- * @file_d: file received from the fopen funcion in main
+ * read_func - reads each line of the file and sends it to the run function
+ * @file_d: file received from the fopen function in main
  * Return: 0 en successful execution. 1 in case of error
  */
 
